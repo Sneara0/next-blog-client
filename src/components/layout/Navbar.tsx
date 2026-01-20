@@ -82,6 +82,12 @@ const Navbar = ({
       
     },
     
+        {
+      title: "Dashboard",
+      url: "/dashboard",
+      
+    },
+    
     
     
     
