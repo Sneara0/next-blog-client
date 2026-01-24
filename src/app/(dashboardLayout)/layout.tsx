@@ -15,10 +15,17 @@ import {
 } from "@/components/ui/sidebar"
 import { Children } from "react"
 
-export default function DashboardLayout({children}:{children:React.ReactNode}) {
+export default function DashboardLayout({admin,user,children}:{ children:React.ReactNode; admin:React.ReactNode; user:React.ReactNode}) {
+  
+  const userInfo={
+    role:"Admin"
+  }
+  
+  
+  
   return (
-    <SidebarProvider>
-      <AppSidebar />
+    <SidebarProvider >
+      <AppSidebar user={userInfo} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
@@ -40,7 +47,11 @@ export default function DashboardLayout({children}:{children:React.ReactNode}) {
             </BreadcrumbList>
           </Breadcrumb>
         </header>
-     <div> {children}</div>
+     <div   className=" flex flex-1 flex-col  gap-4 p-4 "> 
+      {userInfo.role ==="Admin" ? admin : user}
+      
+     </div>
+
       </SidebarInset>
     </SidebarProvider>
   )
